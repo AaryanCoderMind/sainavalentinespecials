@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beautiful Saina ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-pink: #ff69b4;
+            --blush-pink: #ffb6c1;
+            --soft-pink: #ffc0cb;
+            --pale-pink: #ffe4e9;
+            --deep-rose: #ff1493;
+            --crimson: #dc143c;
+            --white: #ffffff;
+            --off-white: #fef5f8;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--pale-pink) 0%, var(--soft-pink) 50%, var(--blush-pink) 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts animation */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatHeart 15s infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Landing Page */
+        .landing {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .landing h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 5rem;
+            color: var(--deep-rose);
+            margin-bottom: 1rem;
+            animation: slideDown 1.5s ease-out;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .landing p {
+            font-size: 1.5rem;
+            color: var(--crimson);
+            margin-bottom: 2rem;
+            animation: slideUp 1.5s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, var(--deep-rose), var(--rose-pink));
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            animation: pulse 2s infinite, slideUp 1.5s ease-out 0.6s both;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        /* Main Content */
+        .content {
+            display: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '❤️';
+            display: block;
+            font-size: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Memories Section */
+        .memory-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            transition: transform 0.4s ease;
+            border: 3px solid var(--blush-pink);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+        }
+
+        .memory-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-rose);
+            margin-bottom: 1rem;
+        }
+
+        .memory-card p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--pale-pink), var(--soft-pink));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: var(--deep-rose);
+            border: 2px dashed var(--rose-pink);
+            font-style: italic;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+            transition: transform 0.4s ease;
+            background: var(--white);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--blush-pink), var(--soft-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* Meme Section */
+        .meme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .meme-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .meme-card:hover {
+            transform: rotate(-3deg) scale(1.05);
+        }
+
+        .meme-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--pale-pink), var(--blush-pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meme-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Heart animation for last card */
+        .hearts-choice {
+            font-size: 4rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .meme-caption {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            border: 3px solid var(--blush-pink);
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .question h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            background: var(--pale-pink);
+            border: 2px solid var(--rose-pink);
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            background: var(--blush-pink);
+            transform: translateX(10px);
+            border-color: var(--deep-rose);
+        }
+
+        .quiz-option.selected {
+            background: var(--rose-pink);
+            color: white;
+            border-color: var(--deep-rose);
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .quiz-btn {
+            background: var(--deep-rose);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            background: var(--crimson);
+            transform: scale(1.05);
+        }
+
+        .quiz-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        .quiz-result.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .quiz-result h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+        }
+
+        .quiz-result p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .score-display {
+            font-size: 4rem;
+            color: var(--crimson);
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        /* Love Letter Section */
+        .love-letter {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4);
+            border: 4px solid var(--blush-pink);
+            position: relative;
+        }
+
+        .love-letter::before {
+            content: '💌';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+        }
+
+        .love-letter p {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .signature {
+            font-family: 'Sacramento', cursive;
+            font-size: 3rem;
+            color: var(--deep-rose);
+            text-align: right;
+            margin-top: 3rem;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        .nav-dots.active {
+            display: block;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--rose-pink);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover {
+            transform: scale(1.5);
+            background: var(--deep-rose);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .landing h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .quiz-container,
+            .love-letter {
+                padding: 30px 20px;
+            }
+
+            .memory-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <!-- Landing Page -->
+    <div class="landing" id="landing">
+        <h1>For My Beautiful Saina</h1>
+        <p>A special surprise just for you ❤️</p>
+        <button class="start-btn" onclick="startExperience()">Open Your Gift</button>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots" id="navDots">
+        <div class="nav-dot" onclick="scrollToSection(0)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2)"></div>
+        <div class="nav-dot" onclick="scrollToSection(3)"></div>
+        <div class="nav-dot" onclick="scrollToSection(4)"></div>
+        <div class="nav-dot" onclick="scrollToSection(5)"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <!-- Love Letter Section -->
+        <section class="section" id="section0">
+            <h2 class="section-title">My Heart's Words</h2>
+            <div class="love-letter">
+                <p>My Dearest Saina,</p>
+                <p>They say distance makes the heart grow fonder, but honestly? My heart was already all yours before the miles came between us. Every video call, every text, every voice message just proves what I already knew - you're worth every second of this wait.</p>
+                <p>You're not just beautiful on the outside - though baby, you are absolutely GORGEOUS and sexy as hell - but it's your soul, your laugh, the way you light up my screen when you're excited about something... that's what I fell for. That's what makes counting down the days until I see you again worth it.</p>
+                <p>I love how you make the distance feel smaller. Coffee tastes better when we're on FaceTime together. Music sounds better when you send me songs. Even the silence is perfect when we're both on the line, just existing in the same moment, even if it's through a screen.</p>
+                <p>You're my favorite notification, my sweetest distraction, and the best decision I never knew I was making. This distance is temporary, but baby, what we have? That's forever.</p>
+                <p>I can't wait to close this distance and show you in person everything I've been dying to do. Until then, know that you're on my mind every single day, in every single way 😏</p>
+                <p>Happy Valentine's Day, beautiful. Here's to counting down the days until I can hold you, kiss you, and never let you go.</p>
+                <div class="signature">Forever Yours, No Matter the Miles</div>
+            </div>
+        </section>
+
+        <!-- Memories Section -->
+        <section class="section" id="section1">
+            <h2 class="section-title">Our Beautiful Story</h2>
+            
+            <div class="memory-card">
+                <h3>The First Time We Met 💫</h3>
+                <div class="photo-placeholder">
+                    <img src="roti-meme.png" alt="Our funny roti moment" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <p>I still remember the exact moment I first saw you - whether it was in person or through a screen, time literally stopped. I tried to play it cool, but inside I was already planning our future together. You had this energy, this glow that just pulled me in. Little did I know that moment would change everything, and that I'd fall for someone so hard despite the distance.</p>
+            </div>
+
+            <div class="memory-card">
+                <h3>Our First Inside Joke 😂</h3>
+                <div class="photo-placeholder">
+                    <img src="roti-cooking.png" alt="Our inside joke" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <p>Remember when we couldn't stop laughing about [add your inside joke here]? That's when I knew we were going to be something special. Your sense of humor is one of the million things I love about you.</p>
+            </div>
+
+            <div class="memory-card">
+                <h3>That Perfect Date 🌹</h3>
+                <div class="photo-placeholder">
+                    <img src="our-photo.png" alt="Our perfect date" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <p>Every moment with you is perfect, but this one... this one was magic. The way you looked at me, the way everything just felt right. I'll remember it forever.</p>
+            </div>
+        </section>
+
+        <!-- Valentine's Week Section -->
+        <section class="section" id="section2">
+            <h2 class="section-title">Our Valentine's Week 💝</h2>
+            <p style="text-align: center; font-size: 1.4rem; max-width: 800px; margin: 0 auto 3rem; color: #666;">7 days of love across the distance - proving miles mean nothing when hearts are this close</p>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="memory-card" style="background: linear-gradient(135deg, #fff0f5, #ffffff); border-color: var(--deep-rose);">
+                    <h3>Day 1 - Monday: Rose Day 🌹</h3>
+                    <p><strong>The Plan:</strong> I'm sending you virtual roses throughout the day - each text message will be a different colored rose with a reason why I love you. Red for passion, pink for my admiration of your beauty, white for how pure my love is.</p>
+                    <p><strong>Special Moment:</strong> A voice message telling you exactly what I'd do if I could hand you those roses in person. Spoiler: it involves pulling you close and not letting go 😏</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ffe4e9, #ffffff); border-color: var(--rose-pink);">
+                    <h3>Day 2 - Tuesday: Propose Day 💍</h3>
+                    <p><strong>The Plan:</strong> A video call where I propose we make promises - to video call every night, to plan our next meetup, to make this distance temporary. I'm proposing that you're mine and I'm yours, no matter the miles.</p>
+                    <p><strong>Special Moment:</strong> I'll show you something special I've been planning for when we're finally together again. Distance is temporary, but us? That's forever.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ffb6c1, #ffffff); border-color: var(--blush-pink);">
+                    <h3>Day 3 - Wednesday: Chocolate Day 🍫</h3>
+                    <p><strong>The Plan:</strong> I'm ordering your favorite chocolates to be delivered to you. Each piece comes with a note - some sweet, some spicy. You'll text me which one you opened, and I'll tell you the naughty thought I had when I wrote it 😈</p>
+                    <p><strong>Special Moment:</strong> A virtual chocolate tasting date where we both have our favorite treats and... well, things might get steamy when I tell you what I wish I could do to you instead.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ff69b4, #ffffff); border-color: var(--rose-pink);">
+                    <h3>Day 4 - Thursday: Teddy Day 🧸</h3>
+                    <p><strong>The Plan:</strong> A care package is coming your way with a teddy bear that's been sprayed with my cologne. It'll keep you company when you miss me, though I promise the real thing is so much better.</p>
+                    <p><strong>Special Moment:</strong> Late night video call where we watch something together. You'll have the teddy, but you'll be wishing it was me holding you instead 😏</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ff1493, #ffffff); border-color: var(--deep-rose);">
+                    <h3 style="color: var(--deep-rose);">Day 5 - Friday: Promise Day 💫</h3>
+                    <p style="color: #333;"><strong>The Plan:</strong> I'm sending you a list of promises - to FaceTime you goodnight every single night, to make you laugh daily, to remind you how sexy you are, to plan our future together, and to make every reunion worth the wait.</p>
+                    <p style="color: #333;"><strong>Special Moment:</strong> A recorded video message of all the things I promise to do to you when I finally have you in my arms again. Keep it private, baby - it's just for you 🔥</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ffc0cb, #ffffff); border-color: var(--soft-pink);">
+                    <h3>Day 6 - Saturday: Hug Day 🤗</h3>
+                    <p><strong>The Plan:</strong> We can't physically hug, but I'm sending you the coziest blanket so you can wrap yourself in it. Imagine it's my arms around you, keeping you warm, making you feel safe... and wanted.</p>
+                    <p><strong>Special Moment:</strong> Virtual hug session - we'll both close our eyes on video call and imagine we're holding each other. I'll whisper all the things I'd do if this hug was real. Trust me, we wouldn't just be hugging 😘</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #dc143c, #ffffff); border-color: var(--crimson);">
+                    <h3 style="color: var(--crimson);">Day 7 - Sunday: Kiss Day 💋</h3>
+                    <p style="color: #333;"><strong>The Plan:</strong> If I could kiss you today, I wouldn't stop. Since I can't, I'm sending you a playlist of songs that remind me of your lips, your touch, the way you make me feel. Every song is a kiss I owe you.</p>
+                    <p style="color: #333;"><strong>Special Moment:</strong> A video message showing you exactly how I'd kiss you - starting soft and sweet, then getting more intense. By the end, you'll be counting down the days until I can do it for real 🔥💋</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ff1493, #ff69b4); border-color: var(--deep-rose); box-shadow: 0 25px 70px rgba(255, 20, 147, 0.5);">
+                    <h3 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Day 8 - Monday: Valentine's Day ❤️‍🔥</h3>
+                    <p style="color: white;"><strong>The Grand Finale:</strong> This website reveal, a special delivery to your door, and a long video call where I tell you everything you mean to me. We might be miles apart, but tonight, we're closer than ever.</p>
+                    <p style="color: white;"><strong>Special Moment:</strong> The most intimate video call we've ever had. Just you, me, and all the ways I plan to show you how much I need you when we're together again. Distance doesn't stand a chance against what we have, beautiful 😏❤️‍🔥</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beauty Appreciation Section -->
+        <section class="section" id="section3">
+            <h2 class="section-title">You're Absolutely Gorgeous</h2>
+            <p style="text-align: center; font-size: 1.5rem; max-width: 900px; margin: 0 auto 3rem; color: #666; font-style: italic;">Every time I see you, I can't believe you're mine</p>
+            
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div class="memory-card" style="background: linear-gradient(135deg, #fff0f5, #ffe4e9); border-color: var(--deep-rose);">
+                    <h3>Your Eyes 👁️✨</h3>
+                    <p>Those eyes... damn, baby. The way you look at me through the screen drives me absolutely crazy. They're deep, captivating, and honestly? I could get lost in them for hours. When you give me that look during our video calls, you have no idea what it does to me. You're dangerously beautiful, Saina.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ffb6c1, #ffc0cb); border-color: var(--rose-pink);">
+                    <h3>Your Smile 😍</h3>
+                    <p>Your smile is pure magic. It lights up my screen, my day, my entire world. That gorgeous, sexy smile that makes my heart skip a beat every single time. When you laugh and your whole face lights up? I'm completely gone. You're so incredibly beautiful when you smile, and knowing I'm the reason behind it makes me feel like the luckiest person alive.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ff69b4, #ffb6c1); border-color: var(--blush-pink);">
+                    <h3>Your Body 🔥</h3>
+                    <p>Saina, you're sexy as hell. Your curves, the way you move, everything about you is absolutely mesmerizing. Even through a screen, you drive me wild. I can't help but imagine running my hands over every inch of you. You're not just beautiful - you're fire, and baby, you know exactly what you're doing to me. Can't wait to worship that body in person.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ff1493, #ff69b4); border-color: var(--deep-rose); box-shadow: 0 20px 60px rgba(255, 20, 147, 0.4);">
+                    <h3 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Your Voice 🎵</h3>
+                    <p style="color: white;">The sound of your voice does things to me. Whether you're laughing, talking about your day, or saying my name in that special way... it's intoxicating. Those late-night calls when your voice gets all soft and sleepy? Dangerously hot. And when you whisper those things to me? Baby, I lose all control.</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #dc143c, #ff1493); border-color: var(--crimson); color: white;">
+                    <h3>Everything About You ❤️‍🔥</h3>
+                    <p>You're not just beautiful, Saina - you're a whole damn fantasy. The way you dress, the way you tease me, your confidence, your playfulness... you're sexy, gorgeous, stunning, and completely irresistible. I count down the minutes until our next video call just to see your face. Distance is torture when you look like that. You're mine, and damn, I'm so proud to call someone this beautiful my girlfriend. 🔥</p>
+                </div>
+
+                <div class="memory-card" style="background: linear-gradient(135deg, #ffc0cb, #ffffff); border-color: var(--soft-pink);">
+                    <h3>That Look You Give Me 😏</h3>
+                    <p>You know exactly what you're doing when you give me that look. That flirty, knowing smile that says you know exactly what's on my mind. It's sexy, it's teasing, and it drives me absolutely insane. The distance doesn't make you any less dangerous to my self-control, beautiful. If anything, it makes me want you more.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intimate Positions Section -->
+        <section class="section" id="section4">
+            <h2 class="section-title">When We're Finally Together 🔥</h2>
+            <p style="text-align: center; font-size: 1.4rem; max-width: 800px; margin: 0 auto 3rem; color: #666; font-style: italic;">All the ways I'm going to make you feel amazing, baby 😏</p>
+            <div class="meme-grid">
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #ff1493, #ff69b4);" id="missionary-img">
+                        <img src="missionary.png" alt="Missionary" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="meme-caption">💋 Missionary 💋<br>Face to face, eye to eye - I want to watch every expression while I make you feel good. Deep, slow, and intimate. Your legs wrapped around me, our bodies perfectly connected.</p>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #dc143c, #ff1493);" id="doggy-img">
+                        <img src="doggy.png" alt="Doggy Style" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="meme-caption">🔥 Doggy Style 🔥<br>Hands on your hips, going deep and rough. I'll pull your hair just the way you like it. This one's for when we both want it wild and intense, baby.</p>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #ff69b4, #ffb6c1);" id="cowgirl-img">
+                        <img src="cowgirl.png" alt="Cowgirl" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="meme-caption">😈 Cowgirl 😈<br>You on top, taking control, riding me exactly how you want it. I get to watch you, touch you everywhere, and let you set the pace. So damn sexy.</p>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #ff1493, #dc143c);" id="spooning-img">
+                        <img src="spooning.png" alt="Spooning" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="meme-caption">💦 Spooning 💦<br>Cuddled close, my body pressed against yours from behind. Slow, deep, intimate - perfect for those lazy mornings or when we just want to feel close while it gets intense.</p>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #dc143c, #ff69b4);" id="standing-img">
+                        <img src="standing.png" alt="Standing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p class="meme-caption">🌶️ Standing 🌶️<br>Against the wall, spontaneous and passionate. When we can't even make it to the bed. Your legs around my waist, pure heat and desire. No patience, just need.</p>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-placeholder" style="background: linear-gradient(135deg, #ff69b4, #ff1493);">
+                        <div class="hearts-choice">❤️💕❤️</div>
+                    </div>
+                    <p class="meme-caption">❤️‍🔥 Your Choice ❤️‍🔥<br>Whatever position makes you feel the best, baby. Tell me what you want, how you want it - I'm here to make all your desires come true. Your pleasure is my priority. 😏</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-size: 1.3rem; color: var(--deep-rose); font-style: italic;">Can't wait to cross every single one of these off our list, beautiful 🔥💕</p>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="section" id="section5">
+            <h2 class="section-title">How Well Do You Know Us? 💕</h2>
+            <div class="quiz-container">
+                <div id="quizQuestions">
+                    <div class="question active" data-question="0">
+                        <h3>What drives me crazy about you? 😏</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 0)">The way you bite your lip when you're thinking</div>
+                            <div class="quiz-option" onclick="selectOption(this, 0)">How you look at me like you can read my mind ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 0)">That little smirk when you know exactly what you're doing</div>
+                            <div class="quiz-option" onclick="selectOption(this, 0)">Everything about you, especially when we're alone</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="1">
+                        <h3>What do I think about when I see you in that dress?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 1)">How lucky I am</div>
+                            <div class="quiz-option" onclick="selectOption(this, 1)">How badly I want to take it off you ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 1)">How we're definitely not making it to dinner on time</div>
+                            <div class="quiz-option" onclick="selectOption(this, 1)">All of the above (let's be honest)</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="2">
+                        <h3>My favorite part of your body is...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 2)">Your lips - the way they feel against mine</div>
+                            <div class="quiz-option" onclick="selectOption(this, 2)">Your curves - every single one of them ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 2)">Your neck - especially when I kiss it</div>
+                            <div class="quiz-option" onclick="selectOption(this, 2)">Everything - I'm obsessed with all of you</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="3">
+                        <h3>What I want to do right now...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 3)">Pull you close and kiss you deeply</div>
+                            <div class="quiz-option" onclick="selectOption(this, 3)">Run my hands through your hair while we...</div>
+                            <div class="quiz-option" onclick="selectOption(this, 3)">Show you exactly how much you turn me on ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 3)">Lock the door and not leave the bedroom all day</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="4">
+                        <h3>The sexiest thing about you is...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 4)">Your confidence - it's intoxicating</div>
+                            <div class="quiz-option" onclick="selectOption(this, 4)">How you know exactly how to tease me</div>
+                            <div class="quiz-option" onclick="selectOption(this, 4)">The sounds you make when we're together ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 4)">How wild you drive me without even trying</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="5">
+                        <h3>When you whisper in my ear...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 5)">I lose all self-control</div>
+                            <div class="quiz-option" onclick="selectOption(this, 5)">My whole body reacts ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 5)">I want to take you right there</div>
+                            <div class="quiz-option" onclick="selectOption(this, 5)">You know exactly what you're doing to me</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="6">
+                        <h3>My favorite way to wake up next to you...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 6)">With you in my arms, skin to skin</div>
+                            <div class="quiz-option" onclick="selectOption(this, 6)">Kissing every inch of you good morning ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 6)">Making sure you're very, very awake 😏</div>
+                            <div class="quiz-option" onclick="selectOption(this, 6)">Starting the day by making you feel amazing</div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="7">
+                        <h3>What I can't stop imagining about tonight...</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 7)">Your body pressed against mine</div>
+                            <div class="quiz-option" onclick="selectOption(this, 7)">Making you feel things only I can ✓</div>
+                            <div class="quiz-option" onclick="selectOption(this, 7)">Hearing you say my name like that</div>
+                            <div class="quiz-option" onclick="selectOption(this, 7)">All the naughty things we're going to do</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-nav">
+                    <button class="quiz-btn" onclick="previousQuestion()" id="prevBtn" style="display: none;">Previous</button>
+                    <button class="quiz-btn" onclick="nextQuestion()" id="nextBtn">Next</button>
+                    <button class="quiz-btn" onclick="finishQuiz()" id="finishBtn" style="display: none;">See Results</button>
+                </div>
+
+                <div class="quiz-result" id="quizResult">
+                    <h3>Quiz Complete! 💖</h3>
+                    <div class="score-display" id="scoreDisplay"></div>
+                    <p id="resultMessage"></p>
+                    <p style="font-size: 1.8rem; margin-top: 2rem;">Here's the truth though: Every answer about you is right because you're everything to me. This quiz was just an excuse to tell you how much I love you in creative ways. 😘</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 20000);
+        }
+
+        // Create hearts continuously
+        setInterval(createHeart, 2000);
+        for (let i = 0; i < 10; i++) {
+            createHeart();
+        }
+
+        // Start experience
+        function startExperience() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('content').classList.add('active');
+            document.getElementById('navDots').classList.add('active');
+        }
+
+        // Quiz functionality
+        let currentQuestion = 0;
+        let selectedAnswers = [];
+        const totalQuestions = 8;
+
+        function selectOption(element, questionIndex) {
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = element.textContent;
+            updateQuizButtons();
+        }
+
+        function updateQuizButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const finishBtn = document.getElementById('finishBtn');
+
+            if (currentQuestion === 0) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-block';
+            }
+
+            if (currentQuestion === totalQuestions - 1) {
+                nextBtn.style.display = 'none';
+                finishBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                finishBtn.style.display = 'none';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion++;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                updateQuizButtons();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion--;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                updateQuizButtons();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quizQuestions').style.display = 'none';
+            document.querySelector('.quiz-nav').style.display = 'none';
+            document.getElementById('quizResult').classList.add('active');
+
+            // Fun scoring - all answers are "correct"!
+            const score = selectedAnswers.length;
+            document.getElementById('scoreDisplay').textContent = `${score} / ${totalQuestions}`;
+
+            let message = '';
+            if (score === totalQuestions) {
+                message = "PERFECT SCORE! But honestly, I rigged this quiz because with you, every answer feels right. You know me so well, beautiful! 💕";
+            } else if (score >= 6) {
+                message = "Amazing! You know my heart so well. But let's be real - I'm obsessed with you, so every answer was about how perfect you are. 😍";
+            } else {
+                message = "That's okay! This quiz was really just an excuse to tell you how amazing you are in 8 different ways. You're still perfect to me! 💖";
+            }
+
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        function scrollToSection(index) {
+            const section = document.getElementById(`section${index}`);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        updateQuizButtons();
+    </script>
+</body>
+</html>
